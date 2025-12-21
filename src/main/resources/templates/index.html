@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Самоуничтожающаяся записка</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-center" style="padding-bottom: 20px; gap: 10px">
+        <a href="/faq" class="btn btn-secondary">Информация о сервисе</a>
+        <a href="/privacypolicy" class="btn btn-secondary">Политика конфиденциальности</a>
+    </div>
+    <div class="card shadow-sm mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4">Создать записку</h2>
+
+            <form action="/create" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Ваш секретный текст:</label>
+                    <textarea name="content" class="form-control" rows="5" placeholder="Пишите здесь..." required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Время жизни:</label>
+                    <select name="lifetime" class="form-select">
+                        <option value="30">30 секунд</option>
+                        <option value="60">1 минута</option>
+                        <option value="3600" selected>1 час</option>
+                        <option value="43200">12 часов</option>
+                        <option value="86400">24 часа</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-danger w-100">🔒 <b> Сгенерировать ссылку</b></button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
