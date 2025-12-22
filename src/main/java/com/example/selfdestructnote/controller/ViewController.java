@@ -43,20 +43,20 @@ public class ViewController {
         try {
             Note note = noteService.getNoteById(id);
             model.addAttribute("noteContent", note.getContent());
-            return "view_note"; // Страница с текстом записки
+            return "view"; // Страница с текстом записки
         } catch (Exception e) {
             model.addAttribute("error", "Записка не найдена или уже уничтожена.");
-            return "view_note";
+            return "view";
         }
     }
 
     @GetMapping("/faq")
     public String viewFAQ() {
-        return "view_faq"; // Возвращаем view_faq.html
+        return "faq"; // Возвращаем view_faq.html
     }
 
     @GetMapping("/privacypolicy")
     public String viewPrivacyPolicy() {
-        return "privacy_policy"; // Возвращаем privacy_policy.html
+        return "privacy"; // Возвращаем privacy_policy.html
     }
 }

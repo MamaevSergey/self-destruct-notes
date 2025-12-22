@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <title>FAQ</title>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1 class="header-title">Самоуничтожающиеся записки</h1>
+            <nav class="header-nav">
+                <a th:href="@{/faq}" class="nav-link active">FAQ</a>
+                <a th:href="@{/privacypolicy}" class="nav-link">Privacy Policy</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="faq-container">
+            <button class="back-btn" onclick="window.location.href='/';" title="Вернуться назад">←</button>
+            
+            <div class="faq-content">
+                <h2 class="faq-title">Часто задаваемые вопросы</h2>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Насколько безопасен SCN2You.ru?</h3>
+                    <p class="faq-answer">
+                        Работаем только по протоколу HTTPS. Это означает, что любые данные, передаваемые на сервер или с сервера, шифруются. Все заметки шифруются перед сохранением на сервере, и только часть ключа для расшифровки содержится в URL-адресе. Этот URL-адрес не хранится на сервере, поэтому расшифровать заметки можно только по ссылке. После просмотра зашифрованные заметки удаляются из системы. Поэтому это довольно безопасно.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Как хранятся заметки перед прочтением?</h3>
+                    <p class="faq-answer">
+                        Заметки шифруются и помещаются в базу данных. URL-адрес хешируется, поэтому невозможно напрямую связать URL-адрес с заметкой.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Могу ли я восстановить заметку после того, как она была прочитана?</h3>
+                    <p class="faq-answer">
+                        Нет. После однократного отображения она удаляется из системы.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Вы можете прочитать записи?</h3>
+                    <p class="faq-answer">
+                        Нет. Заметки шифруются с помощью ключа, который никогда не хранится на сервере. Отобразить заметки можно только по действительному URL-адресу. После просмотра заметок зашифрованные данные удаляются из системы, и ссылка больше не пригодна для просмотра.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Самоуничтожающиеся записки. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

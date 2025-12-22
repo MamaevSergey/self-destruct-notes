@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <title>Privacy Policy</title>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1 class="header-title">Самоуничтожающиеся записки</h1>
+            <nav class="header-nav">
+                <a th:href="@{/faq}" class="nav-link">FAQ</a>
+                <a th:href="@{/privacypolicy}" class="nav-link active">Privacy Policy</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="faq-container">
+            <button class="back-btn" onclick="window.location.href='/';" title="Вернуться назад">←</button>
+            
+            <div class="faq-content privacy-content">
+                <h2 class="privacy-title">Политика конфиденциальности SCN2You.ru</h2>
+                <p class="privacy-date">Последнее изменение: 21.12.2025</p>
+                
+                <p class="privacy-intro">
+                    Мы серьезно относимся к вашей конфиденциальности. Основная цель сервиса — обеспечить передачу конфиденциальной информации с гарантией её последующего уничтожения. В этом документе описано, как мы обрабатываем, храним (кратковременно) и удаляем ваши данные.
+                </p>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">1. Какие данные мы собираем</h3>
+                    <p class="faq-answer">
+                        В силу специфики сервиса мы минимизируем сбор информации.
+                    </p>
+                    <div class="privacy-subsection">
+                        <h4 class="privacy-subheading">1.1. Данные, которые вы предоставляете.</h4>
+                        <p class="faq-answer">
+                            При создании мы получаем только:
+                        </p>
+                        <ul class="privacy-list">
+                            <li>Текст заметки (Content). Текст, который вы вводите для шифрования и передачи.</li>
+                            <li>Параметры жизни заметки: Время, через которое заметка должна быть удалена, если она не будет прочитана.</li>
+                        </ul>
+                        <p class="faq-answer">
+                            Мы не собираем:
+                        </p>
+                        <ul class="privacy-list">
+                            <li>Имена, номера телефонов, Email-адреса (в коде отсутствует функциональная регистрация пользователей).</li>
+                            <li>IP-адреса пользователей.</li>
+                        </ul>
+                    </div>
+
+                    <div class="privacy-subsection">
+                        <h4 class="privacy-subheading">1.2. Автоматические собираемые данные</h4>
+                        <p class="faq-answer">
+                            Как и большинство веб-ресурсов, наш сервер может автоматически сохранять технические логи доступа, которые могут включать:
+                        </p>
+                        <ul class="privacy-list">
+                            <li>IP-адрес устройства</li>
+                            <li>Тип браузера и операционной системы</li>
+                            <li>Время запроса. Эти данные используются исключительно для диагностики технических проблем и защиты от DDoS-атак.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">2. Как мы используем и защищаем ваши данные</h3>
+                    
+                    <div class="privacy-subsection">
+                        <h4 class="privacy-subheading">2.1. Шифрование</h4>
+                        <p class="faq-answer">
+                            Все содержимое заметок шифруется до сохранения в базу данных.
+                        </p>
+                        <ul class="privacy-list">
+                            <li>Мы используем алгоритм шифрования AES (Advanced Encryption Standard)</li>
+                            <li>Заметки хранятся в базе данных только в зашифрованном виде (Base64). Это означает, что даже физическом доступе к серверу текст заметки невозможно прочитать без ключа шифрования.</li>
+                        </ul>
+                    </div>
+
+                    <div class="privacy-subsection">
+                        <h4 class="privacy-subheading">2.2. "Самоуничтожение"</h4>
+                        <p class="faq-answer">
+                            Наш сервис гарантирует удаление данных в двух случаях:
+                        </p>
+                        <ol class="privacy-ordered-list">
+                            <li><strong>После прочтения:</strong> Как только получатель отправляет ссылку и текст заметки невозможно прочитать без ключа шифрования. Одновременно и безопасно удаляется из базы данных. Проточный доступ к ней невозможен.</li>
+                            <li><strong>По истечении времени:</strong> Если заметку не открыли, специальный планирующий (Scheduler) проверит базу данных каждые 20 секунд и автоматически удалит все записи, срок действия которых истек.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">3. Хранение данных</h3>
+                    <ul class="privacy-list">
+                        <li>Мы используем временное хранилище данных.</li>
+                        <li>Мы не создаем резервные копии (бэкапы) текстов активных заметок, чтобы исключить возможность их восстановления после удаления.</li>
+                    </ul>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">4. Передача данных третьим лицам</h3>
+                    <p class="faq-answer">
+                        Мы не продаем, не обмениваем и не передаем ваши данные сторонним компаниям.
+                    </p>
+                    <ul class="privacy-list">
+                        <li>Сервис работает автономно.</li>
+                        <li>В коде проекта отсутствуют интеграции с внешними аналитическими системами или рекламными сетями (на уровне бэкенда).</li>
+                    </ul>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">5. Ограничение ответственности</h3>
+                    <p class="faq-answer">
+                        Пользователь должен осознавать риски передачи информации через интернет:
+                    </p>
+                    <ul class="privacy-list">
+                        <li>Мы гарантируем удаление заметки на сервере, но не не можем контролировать действия получателя (создание скриншотов, копирование текста).</li>
+                        <li>Мы несем ответственности, если ссылка на заметку была передана третьим лицам по вине пользователя (например, через незащищенные каналы связи).</li>
+                    </ul>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">6. Использование файлов Cookie</h3>
+                    <p class="faq-answer">
+                        Сайт может использовать технические файлы cookie, необходимые для корректного отображения интерфейса (Thymelea шаблоны). Мы не используем cookie для отслеживания нашего поведения на сторонних сайтах.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">7. Контакты</h3>
+                    <p class="faq-answer">
+                        Если у вас есть вопросы по работе шифрования или удаленно данных, вы можете связаться с нами:
+                    </p>
+                    <ul class="privacy-list">
+                        <li>Email: sprooknberg@gmail.com</li>
+                        <li>Telegram: [Скрыто]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Самоуничтожающиеся записки. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

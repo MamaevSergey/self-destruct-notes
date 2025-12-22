@@ -1,42 +1,113 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Самоуничтожающаяся записка</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <title>Self-Destruct Notes</title>
 </head>
-<body class="bg-light">
-
-<div class="container mt-5">
-    <div class="d-flex justify-content-center" style="padding-bottom: 20px; gap: 10px">
-        <a href="/faq" class="btn btn-secondary">Информация о сервисе</a>
-        <a href="/privacypolicy" class="btn btn-secondary">Политика конфиденциальности</a>
+<body>
+<header>
+    <div class="header-container">
+        <h1 class="header-title">Самоуничтожающиеся записки</h1>
+        <nav class="header-nav">
+            <a th:href="@{/faq}" class="nav-link">FAQ</a>
+            <a th:href="@{/privacypolicy}" class="nav-link">Privacy Policy</a>
+        </nav>
     </div>
-    <div class="card shadow-sm mx-auto" style="max-width: 600px;">
-        <div class="card-body">
-            <h2 class="card-title text-center mb-4">Создать записку</h2>
+</header>
 
-            <form action="/create" method="post">
-                <div class="mb-3">
-                    <label class="form-label">Ваш секретный текст:</label>
-                    <textarea name="content" class="form-control" rows="5" placeholder="Пишите здесь..." required></textarea>
-                </div>
+<main>
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="form-section">
+                <form class="note-form" th:action="@{/create}" method="post">
+                        <textarea
+                                name="content"
+                                class="note-input"
+                                placeholder="Начните вводить текст записки"
+                                rows="10"
+                                required
+                        ></textarea>
 
-                <div class="mb-3">
-                    <label class="form-label">Время жизни:</label>
-                    <select name="lifetime" class="form-select">
-                        <option value="30">30 секунд</option>
+                    <select name="lifetime" class="time-input" required>
+                        <option value="" disabled selected>Выберите время жизни вашей записки</option>
                         <option value="60">1 минута</option>
-                        <option value="3600" selected>1 час</option>
-                        <option value="43200">12 часов</option>
+                        <option value="3600">1 час</option>
                         <option value="86400">24 часа</option>
                     </select>
+
+                    <button type="submit" class="create-link-btn">Создать ссылку</button>
+                </form>
+            </div>
+
+            <div class="carousel-section">
+                <div class="carousel">
+                    <div class="carousel-slide active">
+                        <h2 class="carousel-title">Как я могу этим пользоваться?</h2>
+                        <div class="slide-content">
+                            <img th:src="@{/images/1 step.png}" alt="Шаг 1" class="carousel-image">
+                            <div class="slide-text">
+                                <p class="carousel-text">
+                                    Воспользуйтесь формой левее, чтобы вести свою конфиденциальную информацию и получить короткий URL-адрес.
+                                </p>
+                                <p class="carousel-example">(Пример: https://securitynotes/view/...).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <h2 class="carousel-title">Как я могу этим пользоваться?</h2>
+                        <div class="slide-content">
+                            <img th:src="@{/images/2 step.png}" alt="Шаг 2" class="carousel-image">
+                            <div class="slide-text">
+                                <p class="carousel-text">
+                                    Отправьте указанный URL-адрес вашему получателю, используя выбранное вами средство связи. Например:
+                                </p>
+                                <ul class="carousel-list">
+                                    <li>Мгновенные сообщения,</li>
+                                    <li>Электронная почта,</li>
+                                    <li>Телеграмм</li>
+                                    <li>VK</li>
+                                    <li>WhatsApp</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <h2 class="carousel-title">Как я могу этим пользоваться?</h2>
+                        <div class="slide-content">
+                            <img th:src="@{/images/3 step.png}" alt="Шаг 3" class="carousel-image">
+                            <div class="slide-text">
+                                <p class="carousel-text">
+                                    Когда они перейдут по этой ссылке, им будет показана конфиденциальная информация.
+                                </p>
+                                <p class="carousel-text">
+                                    Затем информация будет удалена в нашей системе и не может быть восстановлена повторно.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <button type="submit" class="btn btn-danger w-100">🔒 <b> Сгенерировать ссылку</b></button>
-            </form>
+                <div class="carousel-indicators">
+                    <button type="button" class="indicator active" data-slide="0"></button>
+                    <button type="button" class="indicator" data-slide="1"></button>
+                    <button type="button" class="indicator" data-slide="2"></button>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</main>
 
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2025 Самоуничтожающиеся записки. Все права защищены.</p>
+    </div>
+</footer>
+
+<script th:src="@{/js/carousel.js}"></script>
 </body>
 </html>

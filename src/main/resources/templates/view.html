@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/view.css}">
+    <title>Просмотр записки - Self-Destruct Notes</title>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1 class="header-title">Самоуничтожающиеся записки</h1>
+            <nav class="header-nav">
+                <a th:href="@{/faq}" class="nav-link">FAQ</a>
+                <a th:href="@{/privacypolicy}" class="nav-link">Privacy Policy</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="view-container">
+            <!-- Левое декоративное изображение -->
+            <div class="view-side-left">
+                <img th:src="@{/images/ФонView1.png}" alt="Декорация" class="view-side-image">
+            </div>
+
+            <!-- Центральный контент -->
+            <div class="view-content">
+                <h2 class="view-title">Вы читаете текст самоуничтожающейся записки</h2>
+
+                <textarea class="view-text-box view-text" readonly th:text="${noteContent != null ? noteContent : error}"></textarea>
+
+                <div class="view-warning">
+                    <p class="view-warning-text">
+                        Внимание! Эта записка уже была уничтожена и если вы перезагрузите страницу или не сохраните ее текст, вы потеряете эту информацию навсегда!
+                    </p>
+                </div>
+
+                <div class="view-buttons">
+                    <button class="view-copy-btn" onclick="copyTextToClipboard();" th:if="${noteContent}">Копировать в буфер</button>
+                    <button class="view-create-btn" onclick="window.location.href='/';">Создать свою</button>
+                </div>
+            </div>
+
+            <!-- Правое декоративное изображение -->
+            <div class="view-side-right">
+                <img th:src="@{/images/ФонView1.png}" alt="Декорация" class="view-side-image">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Самоуничтожающиеся записки. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        function copyTextToClipboard() {
+            const textBox = document.querySelector('.view-text');
+            textBox.select();
+            
+            try {
+                document.execCommand('copy');
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = 'Скопировано!';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 2000);
+            } catch (err) {
+                alert('Ошибка при копировании');
+                console.error(err);
+            }
+        }
+    </script>
+</body>
+</html>

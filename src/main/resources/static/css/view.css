@@ -1,0 +1,457 @@
+/* ============================================
+   FONTS
+   ============================================ */
+@font-face {
+    font-family: 'SF Pro Display';
+    /* Обрати внимание: путь ../fonts/ ведет из папки css в папку fonts */
+    src: url('../fonts/SF-Pro-Display-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SF Pro Display';
+    src: url('../fonts/SF-Pro-Display-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    padding: 40px 20px;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+header {
+    background: linear-gradient(135deg, #2287AC 0%, #1f79a0 100%);
+    color: white;
+    padding: 25px 20px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 12px rgba(34, 135, 172, 0.2);
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-title {
+    font-size: 32px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.header-nav {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    transition: opacity 0.3s ease;
+}
+
+.nav-link:hover {
+    opacity: 0.8;
+}
+
+.nav-link.active {
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+/* ============================================
+   VIEW PAGE STYLES
+   ============================================ */
+.view-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 230px 1fr 230px;
+    gap: 20px;
+    align-items: stretch;
+}
+
+/* SIDE IMAGES */
+.view-side-left,
+.view-side-right {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.view-side-image {
+    width: 230px;
+    height: 740px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* CENTER CONTENT */
+.view-content {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.view-title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.view-text-box {
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: #fafafa;
+    min-height: 200px;
+    max-height: 400px;
+    overflow-y: auto;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    resize: vertical;
+    border: 2px solid #e0e0e0;
+}
+
+.view-text-box:focus {
+    outline: none;
+    border-color: #2287AC;
+}
+
+.view-warning {
+    background-color: #1f5a7a;
+    border-radius: 15px;
+    padding: 20px;
+    border-left: 4px solid #06af15;
+}
+
+.view-warning-text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: white;
+    margin: 0;
+}
+
+.view-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.view-copy-btn,
+.view-create-btn {
+    background: linear-gradient(135deg, #2287AC 0%, #1f79a0 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.view-copy-btn:hover,
+.view-create-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(34, 135, 172, 0.3);
+}
+
+.view-copy-btn:active,
+.view-create-btn:active {
+    transform: translateY(0);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+    background-color: #2287AC;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    font-size: 14px;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Планшеты (768px - 1024px) */
+@media (max-width: 1024px) {
+    main {
+        padding: 30px 15px;
+    }
+
+    .header-title {
+        font-size: 26px;
+    }
+
+    .header-nav {
+        gap: 20px;
+    }
+
+    .nav-link {
+        font-size: 14px;
+    }
+
+    .view-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .view-side-left,
+    .view-side-right {
+        display: none;
+    }
+
+    .view-content {
+        padding: 30px;
+        gap: 20px;
+    }
+
+    .view-title {
+        font-size: 22px;
+    }
+
+    .view-text-box {
+        padding: 18px;
+        min-height: 150px;
+    }
+
+    .view-text {
+        font-size: 15px;
+    }
+
+    .view-warning-text {
+        font-size: 14px;
+    }
+
+    .view-buttons {
+        flex-direction: column;
+    }
+
+    .view-copy-btn,
+    .view-create-btn {
+        width: 100%;
+        font-size: 15px;
+    }
+}
+
+/* Мобильные устройства (до 768px) */
+@media (max-width: 768px) {
+    header {
+        padding: 20px 15px;
+        border-radius: 0 0 15px 15px;
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .header-title {
+        font-size: 24px;
+    }
+
+    .header-nav {
+        gap: 20px;
+        align-self: flex-end;
+    }
+
+    .nav-link {
+        font-size: 14px;
+    }
+
+    main {
+        padding: 25px 15px;
+    }
+
+    .view-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .view-side-left,
+    .view-side-right {
+        display: none;
+    }
+
+    .view-content {
+        padding: 25px;
+        gap: 20px;
+    }
+
+    .view-title {
+        font-size: 20px;
+    }
+
+    .view-text-box {
+        padding: 15px;
+        min-height: 140px;
+        max-height: 300px;
+    }
+
+    .view-text {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .view-warning {
+        padding: 15px;
+    }
+
+    .view-warning-text {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .view-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .view-copy-btn,
+    .view-create-btn {
+        width: 100%;
+        font-size: 15px;
+        padding: 11px 25px;
+    }
+
+    footer {
+        padding: 20px 15px;
+    }
+
+    .footer-content {
+        font-size: 12px;
+    }
+}
+
+/* Маленькие мобильные (до 480px) */
+@media (max-width: 480px) {
+    header {
+        padding: 15px 10px;
+    }
+
+    .header-title {
+        font-size: 20px;
+    }
+
+    .header-nav {
+        gap: 15px;
+        width: 100%;
+    }
+
+    .nav-link {
+        font-size: 12px;
+        flex: 1;
+        text-align: center;
+    }
+
+    main {
+        padding: 20px 10px;
+    }
+
+    .view-content {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .view-title {
+        font-size: 18px;
+        line-height: 1.3;
+    }
+
+    .view-text-box {
+        padding: 12px;
+        min-height: 120px;
+        max-height: 250px;
+    }
+
+    .view-text {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    .view-warning {
+        padding: 12px;
+    }
+
+    .view-warning-text {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .view-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .view-copy-btn,
+    .view-create-btn {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    footer {
+        padding: 15px 10px;
+    }
+
+    .footer-content {
+        font-size: 11px;
+    }
+}
