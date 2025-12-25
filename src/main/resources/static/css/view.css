@@ -1,9 +1,5 @@
-/* ============================================
-   FONTS
-   ============================================ */
 @font-face {
     font-family: 'SF Pro Display';
-    /* Обрати внимание: путь ../fonts/ ведет из папки css в папку fonts */
     src: url('../fonts/SF-Pro-Display-Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
@@ -16,9 +12,6 @@
     font-style: normal;
 }
 
-/* ============================================
-   RESET & BASE STYLES
-   ============================================ */
 * {
     margin: 0;
     padding: 0;
@@ -44,9 +37,6 @@ main {
     padding: 40px 20px;
 }
 
-/* ============================================
-   HEADER
-   ============================================ */
 header {
     background: linear-gradient(135deg, #2287AC 0%, #1f79a0 100%);
     color: white;
@@ -93,9 +83,6 @@ header {
     text-decoration: underline;
 }
 
-/* ============================================
-   VIEW PAGE STYLES
-   ============================================ */
 .view-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -106,7 +93,6 @@ header {
     align-items: stretch;
 }
 
-/* SIDE IMAGES */
 .view-side-left,
 .view-side-right {
     display: flex;
@@ -122,7 +108,6 @@ header {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* CENTER CONTENT */
 .view-content {
     background: white;
     border-radius: 20px;
@@ -208,9 +193,6 @@ header {
     transform: translateY(0);
 }
 
-/* ============================================
-   FOOTER
-   ============================================ */
 footer {
     background-color: #2287AC;
     color: white;
@@ -225,11 +207,6 @@ footer {
     font-size: 14px;
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
-
-/* Планшеты (768px - 1024px) */
 @media (max-width: 1024px) {
     main {
         padding: 30px 15px;
@@ -290,7 +267,6 @@ footer {
     }
 }
 
-/* Мобильные устройства (до 768px) */
 @media (max-width: 768px) {
     header {
         padding: 20px 15px;
@@ -380,7 +356,6 @@ footer {
     }
 }
 
-/* Маленькие мобильные (до 480px) */
 @media (max-width: 480px) {
     header {
         padding: 15px 10px;

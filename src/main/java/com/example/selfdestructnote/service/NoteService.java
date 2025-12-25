@@ -3,9 +3,10 @@ package com.example.selfdestructnote.service;
 import com.example.selfdestructnote.exception.NoteNotFoundException;
 import com.example.selfdestructnote.model.Note;
 import com.example.selfdestructnote.repository.NoteRepository;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Isolation;
 import java.time.LocalDateTime;
 
 @Service
@@ -24,15 +25,14 @@ public class NoteService {
         return noteRepository.save(note);
     }
 
-    // Метод чтения записки
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public Note getNoteById(String id) {
-        // Ищем записку, если нет - выбрасываем ошибку (пока RuntimeException для простоты)
         Note note = noteRepository.findById(id)
                 .orElseThrow(() -> new NoteNotFoundException("Записка не найдена или уже была прочитана!"));
 
         String decryptedContent = encryptionService.decrypt(note.getContent());
         note.setContent(decryptedContent);
-        noteRepository.delete(note); // Удаляем из базы навсегда!
+        noteRepository.delete(note);
 
         return note;
     }

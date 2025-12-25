@@ -19,7 +19,6 @@ public class NoteController {
     @Operation(summary = "Создать секретную заметку", description = "Возвращает объект с ID, который является ссылкой")
     @PostMapping
     public Note createNote(@RequestBody NoteRequest request) {
-        // По умолчанию ставим время жизни 3600 сек (1 час), если не передали
         int lifetime = request.getLifetimeSeconds() > 0 ? request.getLifetimeSeconds() : 3600;
         return noteService.createNote(request.getContent(), lifetime);
     }

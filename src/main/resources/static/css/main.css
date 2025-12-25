@@ -1,9 +1,5 @@
-/* ============================================
-   FONTS
-   ============================================ */
 @font-face {
     font-family: 'SF Pro Display';
-    /* Обрати внимание: путь ../fonts/ ведет из папки css в папку fonts */
     src: url('../fonts/SF-Pro-Display-Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
@@ -16,9 +12,6 @@
     font-style: normal;
 }
 
-/* ============================================
-   RESET & BASE STYLES
-   ============================================ */
 * {
     margin: 0;
     padding: 0;
@@ -44,9 +37,6 @@ main {
     padding: 40px 20px;
 }
 
-/* ============================================
-   HEADER
-   ============================================ */
 header {
     background: linear-gradient(135deg, #2287AC 0%, #1f79a0 100%);
     color: white;
@@ -93,9 +83,6 @@ header {
     text-decoration: underline;
 }
 
-/* ============================================
-   CONTAINER & LAYOUT
-   ============================================ */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -109,9 +96,6 @@ header {
     align-items: start;
 }
 
-/* ============================================
-   FORM SECTION (LEFT)
-   ============================================ */
 .form-section {
     background: white;
     border-radius: 15px;
@@ -192,9 +176,6 @@ header {
     transform: translateY(0);
 }
 
-/* ============================================
-   CAROUSEL SECTION (RIGHT)
-   ============================================ */
 .carousel-section {
     background: white;
     border-radius: 15px;
@@ -279,9 +260,6 @@ header {
     margin-bottom: 3px;
 }
 
-/* ============================================
-   CAROUSEL INDICATORS
-   ============================================ */
 .carousel-indicators {
     display: flex;
     justify-content: center;
@@ -308,9 +286,6 @@ header {
     transform: scale(1.2);
 }
 
-/* ============================================
-   FOOTER
-   ============================================ */
 footer {
     background-color: #2287AC;
     color: white;
@@ -325,9 +300,6 @@ footer {
     font-size: 14px;
 }
 
-/* ============================================
-   FAQ PAGE
-   ============================================ */
 .faq-container {
     max-width: 700px;
     margin: 0 auto;
@@ -406,9 +378,6 @@ footer {
     margin: 0;
 }
 
-/* ============================================
-   PRIVACY PAGE
-   ============================================ */
 .privacy-content {
     max-width: 700px;
 }
@@ -476,11 +445,6 @@ footer {
     margin-bottom: 8px;
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
-
-/* Планшеты (768px - 1024px) */
 @media (max-width: 1024px) {
     main {
         padding: 30px 15px;
@@ -527,7 +491,6 @@ footer {
     }
 }
 
-/* Мобильные устройства (до 768px) */
 @media (max-width: 768px) {
     header {
         padding: 20px 15px;
@@ -572,7 +535,7 @@ footer {
 
     .note-input {
         min-height: 150px;
-        font-size: 16px; /* Предотвращает зум на iOS */
+        font-size: 16px;
     }
 
     .slide-content {
@@ -666,7 +629,6 @@ footer {
     }
 }
 
-/* Маленькие мобильные (до 480px) */
 @media (max-width: 480px) {
     header {
         padding: 15px 10px;
@@ -818,7 +780,6 @@ footer {
     }
 }
 
-/* Маленькие мобильные (до 480px) - Privacy */
 @media (max-width: 480px) {
     .privacy-date {
         font-size: 10px;

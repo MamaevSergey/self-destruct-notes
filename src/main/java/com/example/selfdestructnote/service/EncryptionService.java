@@ -2,7 +2,6 @@ package com.example.selfdestructnote.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
@@ -24,7 +23,6 @@ public class EncryptionService {
             cipher.init(Cipher.ENCRYPT_MODE, secretKey);
 
             byte[] encryptedBytes = cipher.doFinal(value.getBytes());
-            // Превращаем байты в строку Base64, чтобы удобно хранить в БД
             return Base64.getEncoder().encodeToString(encryptedBytes);
         } catch (Exception e) {
             throw new RuntimeException("Error encrypting data", e);

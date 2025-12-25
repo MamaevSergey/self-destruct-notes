@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <link rel="stylesheet" th:href="@{/css/view.css}">
     <title>Просмотр записки - Self-Destruct Notes</title>
 </head>
@@ -19,12 +22,10 @@
 
     <main>
         <div class="view-container">
-            <!-- Левое декоративное изображение -->
             <div class="view-side-left">
                 <img th:src="@{/images/ФонView1.png}" alt="Декорация" class="view-side-image">
             </div>
 
-            <!-- Центральный контент -->
             <div class="view-content">
                 <h2 class="view-title">Вы читаете текст самоуничтожающейся записки</h2>
 
@@ -42,7 +43,6 @@
                 </div>
             </div>
 
-            <!-- Правое декоративное изображение -->
             <div class="view-side-right">
                 <img th:src="@{/images/ФонView1.png}" alt="Декорация" class="view-side-image">
             </div>
@@ -56,6 +56,23 @@
     </footer>
 
     <script>
+        window.addEventListener("pageshow", function (event) {
+            var historyTraversal = event.persisted ||
+                (typeof window.performance != "undefined" &&
+                    window.performance.navigation.type === 2);
+
+            if (historyTraversal) {
+                window.location.reload();
+            }
+        });
+
+        window.addEventListener("pagehide", function() {
+            var textBox = document.querySelector('.view-text');
+            if (textBox) {
+                textBox.value = "";
+            }
+        });
+
         function copyTextToClipboard() {
             const textBox = document.querySelector('.view-text');
             textBox.select();

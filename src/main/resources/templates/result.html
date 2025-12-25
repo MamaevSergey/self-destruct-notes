@@ -65,8 +65,7 @@
             const linkInput = document.querySelector('.result-link-input');
             linkInput.select();
             document.execCommand('copy');
-            
-            // Визуальная обратная связь
+
             const btn = event.target;
             const originalText = btn.textContent;
             btn.textContent = 'Скопировано!';
@@ -75,7 +74,6 @@
             }, 2000);
         }
 
-        // Копирование по клику на кнопку копирования в ссылке
         document.querySelector('.copy-btn').addEventListener('click', function() {
             const linkInput = document.querySelector('.result-link-input');
             linkInput.select();

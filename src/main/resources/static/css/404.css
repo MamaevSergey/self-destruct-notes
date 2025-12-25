@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+
+    background-image: url('../images/background.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    padding-top: 45vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.glass-container {
+    text-align: center;
+    padding: 2rem 3rem;
+    border-radius: 24px;
+
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+
+    max-width: 90%;
+    width: 600px;
+}
+
+h1 {
+    font-size: 8rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 10px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+
+    background: linear-gradient(180deg, #ffffff 0%, #c4e0e5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+}
+
+.btn-home {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 50px;
+
+    background: linear-gradient(135deg, #00C6FF 0%, #0072FF 100%);
+
+    box-shadow: 0 4px 15px rgba(0, 114, 255, 0.4);
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.btn-home:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 114, 255, 0.6);
+    background: linear-gradient(135deg, #29d1ff 0%, #2085ff 100%);
+}
+
+.btn-home:active {
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+
+    body {
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+
+        background-image: url('../images/background2.png');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .glass-container {
+        padding: 2rem 1rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
