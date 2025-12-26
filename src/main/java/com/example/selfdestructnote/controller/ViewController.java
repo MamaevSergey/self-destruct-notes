@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequiredArgsConstructor
@@ -29,27 +30,41 @@ public class ViewController {
     @PostMapping("/create")
     public String createNote(@RequestParam String content,
                              @RequestParam int lifetime,
-                             Model model) {
+                             RedirectAttributes redirectAttributes) {
         Note note = noteService.createNote(content, lifetime);
+        redirectAttributes.addFlashAttribute("message", "Записка создана!");
+        redirectAttributes.addFlashAttribute("link", baseLink + "/view/" + note.getId());
 
-        model.addAttribute("message", "Записка создана!");
-        model.addAttribute("link", baseLink + "/view/" + note.getId());
+        return "redirect:/result";
+    }
 
+    @GetMapping("/result")
+    public String result(Model model) {
+        if (!model.containsAttribute("link")) {
+            return "redirect:/";
+        }
         return "result";
     }
 
     @GetMapping("/view/{id}")
-    public String viewNote(@PathVariable String id, Model model, HttpServletResponse response) {
-        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-        response.setHeader("Pragma", "no-cache");
-        response.setHeader("Expires", "0");
-        response.setHeader("X-Robots-Tag", "noindex, nofollow");
+    public String viewNote(@PathVariable String id, Model model,
+                           HttpServletResponse response) {
+        response.setHeader("Cache-Control",
+                "no-cache, no-store, must-revalidate");
+        response.setHeader("Pragma",
+                "no-cache");
+        response.setHeader("Expires",
+                "0");
+        response.setHeader("X-Robots-Tag",
+                "noindex, nofollow");
         try {
             Note note = noteService.getNoteById(id);
-            model.addAttribute("noteContent", note.getContent());
+            model.addAttribute("noteContent",
+                    note.getContent());
             return "view";
         } catch (Exception e) {
-            model.addAttribute("error", "Записка не найдена или уже уничтожена.");
+            model.addAttribute("error",
+                    "Записка не найдена или уже уничтожена.");
             return "404";
         }
     }

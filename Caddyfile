@@ -1,0 +1,7 @@
+scn2you.ru {
+    reverse_proxy app:8080
+}
+
+www.scn2you.ru {
+    redir https://scn2you.ru{uri}
+}

@@ -6,8 +6,23 @@ services:
     ports:
       - "80:8080"
     environment:
-
-      # IP сервера Yandex Cloud
-      APP_BASE_URL: "http://localhost:8080"
-
+      APP_BASE_URL: "https://scn2you.ru"
       CUSTOM_SECURITY_ENCRYPTION_KEY: "AUJDFHETSOMLKDJH"
+
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    restart: always
+    ports:
+      - "80:80"   # Для получения сертификата
+      - "443:443" # Для HTTPS
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
+
+volumes:
+  caddy_data:
+  caddy_config:
