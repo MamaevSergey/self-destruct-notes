@@ -25,6 +25,10 @@ public class NoteService {
         return noteRepository.save(note);
     }
 
+    public boolean exists(String id) {
+        return noteRepository.existsById(id);
+    }
+
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public Note getNoteById(String id) {
         Note note = noteRepository.findById(id)

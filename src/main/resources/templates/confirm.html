@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/view.css}"> <title>Подтверждение - Self-Destruct Notes</title>
+</head>
+<body>
+<header th:replace="~{index :: header}"></header>
+<main>
+    <div class="view-container">
+        <div class="view-side-left">
+            <img th:src="@{/images/ФонView1.png}" alt="Декорация" class="view-side-image">
+        </div>
+
+        <div class="view-content">
+            <h2 class="view-title">Вам прислали секретную записку</h2>
+
+            <div class="view-warning" style="margin-bottom: 30px;">
+                <p class="view-warning-text">
+                    Внимание! После нажатия кнопки текст будет расшифрован, а записка навсегда удалится  из системы.
+                </p>
+            </div>
+
+            <div class="view-buttons" style="text-align: center">
+                <form th:action="@{'/view/' + ${id}}" method="post" style="width: 100%;">
+                    <button type="submit" class="view-copy-btn" style="width: 50%; cursor: pointer; ">
+                        Прочитать записку
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="view-side-right">
+            <img th:src="@{/images/ФонView2.png}" alt="Декорация" class="view-side-image">
+        </div>
+    </div>
+</main>
+
+<footer th:replace="~{index :: footer}"></footer>
+</body>
+</html>

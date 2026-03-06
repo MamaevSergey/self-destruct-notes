@@ -47,24 +47,26 @@ public class ViewController {
     }
 
     @GetMapping("/view/{id}")
-    public String viewNote(@PathVariable String id, Model model,
-                           HttpServletResponse response) {
-        response.setHeader("Cache-Control",
-                "no-cache, no-store, must-revalidate");
-        response.setHeader("Pragma",
-                "no-cache");
-        response.setHeader("Expires",
-                "0");
-        response.setHeader("X-Robots-Tag",
-                "noindex, nofollow");
+    public String showConfirmPage(@PathVariable String id, Model model) {
+        if (noteService.exists(id)) {
+            model.addAttribute("id", id);
+            return "confirm"; // Показываем новую страницу подтверждения
+        }
+        return "404";
+    }
+
+    @PostMapping("/view/{id}")
+    public String viewNote(@PathVariable String id, Model model, HttpServletResponse response) {
+        // Настройки кэша остаются здесь
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        response.setHeader("Pragma", "no-cache");
+        response.setHeader("Expires", "0");
+
         try {
             Note note = noteService.getNoteById(id);
-            model.addAttribute("noteContent",
-                    note.getContent());
-            return "view";
+            model.addAttribute("noteContent", note.getContent());
+            return "view"; // Показываем оригинальную страницу с текстом
         } catch (Exception e) {
-            model.addAttribute("error",
-                    "Записка не найдена или уже уничтожена.");
             return "404";
         }
     }
